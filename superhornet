@@ -1,0 +1,31 @@
+#!/bin/sh
+# superhornet A1 revision 1
+
+#Base directory of supergayfirefox
+browser="/usr/bin/firefox"
+browserparams="--no-remote --browser --chrome://content/browser.xul"
+
+cachedir="$HOME/.cache/mozilla/firefox"
+#error_log="/var/log/superhornet/debug"
+cleantmpdir(){
+if [ ! -z "${cachedir}" ];
+then
+	echo "cleaning cache: $cachedir"
+	rm -rf ${cachedir}
+	if [ -d "/var/run/firefox" ];
+	then
+	 echo "clearing /var/run/firefox"	 
+	 rm -rf /var/run/firefox
+	 echo "clearing /tmp"
+	 rm -rf /tmp/*
+	fi  
+fi
+#rm -rf /tmp/*
+}
+startbrowser(){
+	cleantmpdir;
+	#export http_proxy=${useproxy}
+	exec ${browser} ${browserparams} ${@} 
+}
+
+startbrowser;

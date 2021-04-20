@@ -1,0 +1,3 @@
+#!/bin/sh
+
+/usr/bin/firejail --noprofile --private-tmp --allusers --dns=8.8.8.8 superhornet
