@@ -15,7 +15,7 @@ Optional:
 
 To start superhornet in firejail mode:
 
-$ /usr/bin/firejail --noprofile --private-tmp --allusers --dns=8.8.8.8 /usr/local/bin/superhornet
+$ /usr/bin/firejail --x11 --noprofile --private-tmp --allusers --dns=8.8.8.8 /usr/local/bin/superhornet
 
 To start normally:
 
