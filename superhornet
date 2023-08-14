@@ -1,31 +1,52 @@
-#!/bin/sh
-# superhornet A1 revision 1
+#!/bin/bash
+# vim: ts=4:sw=4:ai=1
+# Superhornet A2 revision 1 by smart
+# Launch headless chrome browser instance from within the firefox server
+#
+# Copyright 2022-2023 Etienne Robillard 
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <https://www.gnu.org/licenses/>
+# 
+# Hint: to start ff or waterfox using firejail, try something like "firejail superhornet"
 
-#Base directory of supergayfirefox
-browser="/usr/bin/firefox"
+# Change this.
+browser="/usr/local/waterfox/waterfox"
+
+# Don't touch this line
 browserparams="--no-remote --browser --chrome://content/browser.xul"
 
-cachedir="$HOME/.cache/mozilla/firefox"
+cachedir="$HOME/.cache/waterfox"
+
 #error_log="/var/log/superhornet/debug"
-cleantmpdir(){
+
+cleancachedir(){
 if [ ! -z "${cachedir}" ];
 then
-	echo "cleaning cache: $cachedir"
-	rm -rf ${cachedir}
 	if [ -d "/var/run/firefox" ];
 	then
-	 echo "clearing /var/run/firefox"	 
-	 rm -rf /var/run/firefox
-	 echo "clearing /tmp"
-	 rm -rf /tmp/*
+		echo "Swiping away ${cachedir} !!"	 
+	 	@rm -rf ${cachedir} || true 
+ 	else
+		echo "No ${cachedir} found... Good."
 	fi  
 fi
-#rm -rf /tmp/*
 }
+
 startbrowser(){
-	cleantmpdir;
-	#export http_proxy=${useproxy}
-	exec ${browser} ${browserparams} ${@} 
+	cleancachedir;
+	echo "Starting up ${browser}"
+	${browser} ${browserparams} $@ 
 }
 
 startbrowser;

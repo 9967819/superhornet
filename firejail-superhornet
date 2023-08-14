@@ -1,3 +1,4 @@
-#!/bin/sh
-
-/usr/bin/firejail --noprofile --x11 --private-tmp --allusers --dns=8.8.8.8 superhornet
+#!/bin/bash
+# dnscrypt-proxy: --dns=127.0.0.1
+# google/cloudflare/etc: --dns=1.1.1.1
+/usr/bin/firejail --noprofile --private-tmp --allusers --dns=127.0.0.1 /usr/local/bin/superhornet
