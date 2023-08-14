@@ -15,18 +15,17 @@ Optional libraries:
 
 Usage:
 
-First copy superhornet to /usr/local/bin:
+First copy superhornet to /usr/local/bin::
+
 sudo cp superhornet /usr/local/bin/
 
-To start superhornet in firejail mode:
-$ firejail --x11 --noprofile --private-tmp --allusers --dns=8.8.8.8 /usr/local/bin/superhornet
+To start superhornet in firejail mode::
+
+firejail --x11 --noprofile --private-tmp --allusers --dns=8.8.8.8 /usr/local/bin/superhornet
 
 Alternatively you can use firejail-superhornet wrapper:
-$ firejail-superhornet 
 
-To start normally:
-$ /usr/local/bin/superhornet
-
+./firejail-superhornet 
 
 See also:
 
@@ -35,7 +34,7 @@ firejail(8)
 
 Known issues:
 
-1. firejail segfault with --memory-deny-write-execute
+firejail segfault with --memory-deny-write-execute
 
 
 Have fun! :)
