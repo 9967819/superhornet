@@ -11,7 +11,7 @@ Recommended libraries:
 - firejail (apt-get install firejail)
 - Xephyr library (experimental, untested) : dnf install xorg-x11-server-Xephyr
 - libseccomp (experimental)
-
+- dnscrypt-proxy 
 
 Usage:
 
