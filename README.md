@@ -6,22 +6,22 @@ Basic requirements:
 
 2. superhornet script included in the repo
 
-Optional libraries:
+Recommended libraries:
 
 - firejail (apt-get install firejail)
 - Xephyr library (experimental, untested) : dnf install xorg-x11-server-Xephyr
-
+- libseccomp (experimental)
 
 
 Usage:
 
 First copy superhornet to /usr/local/bin::
 
-sudo cp superhornet /usr/local/bin/
+	% sudo cp superhornet /usr/local/bin/
 
 To start superhornet in firejail mode::
 
-firejail --x11 --noprofile --private-tmp --allusers --dns=8.8.8.8 /usr/local/bin/superhornet
+	% firejail --x11 --noprofile --private-tmp --allusers --dns=8.8.8.8 /usr/local/bin/superhornet
 
 Alternatively you can use firejail-superhornet wrapper:
 
@@ -31,6 +31,7 @@ See also:
 
 firejail(8) 
 
+seccomp
 
 Known issues:
 

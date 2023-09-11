@@ -1,4 +1,4 @@
 #!/bin/bash
 # dnscrypt-proxy: --dns=127.0.0.1
 # google/cloudflare/etc: --dns=1.1.1.1
-/usr/bin/firejail --noprofile --private-tmp --allusers --dns=127.0.0.1 /usr/local/bin/superhornet
+/usr/bin/firejail --noprofile --seccomp --restrict-namespaces --private-tmp --allusers --dns=127.0.0.1 /usr/local/bin/superhornet
